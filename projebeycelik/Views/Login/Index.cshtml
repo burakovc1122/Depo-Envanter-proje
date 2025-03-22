@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .login-container {
+            max-width: 400px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+            .login-container img {
+                width: 100px; /* Logo boyutu */
+                height: auto;
+                margin-bottom: 20px;
+            }
+
+        .btn-primary {
+            background-color: #003366;
+            border-color: #003366;
+        }
+
+            .btn-primary:hover {
+                background-color: #002244;
+            }
+
+        .page-title {
+            text-align: center;
+            font-size: 24px;
+            color: #003366;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Form -->
+    <div class="container d-flex justify-content-center">
+        <div class="login-container">
+            <!-- Logo Eklendi -->
+            <img src="/images/logo.png" alt="Beyçelik Gestamp Logo">
+
+            <h2 class="text-center">Giriş Yap</h2>
+            <p class="page-title">Beyçelik Gestamp Depo Envanter</p>
+
+            <form method="post" action="/Login/Validate">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Kullanıcı Adı</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Kullanıcı adınızı girin" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Şifre</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Şifrenizi girin" required>
+                </div>
+                @if (ViewBag.ErrorMessage != null)
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @ViewBag.ErrorMessage
+                    </div>
+                }
+                <button type="submit" class="btn btn-primary w-100">Giriş Yap</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

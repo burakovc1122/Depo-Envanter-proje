@@ -1,0 +1,53 @@
+﻿@model projebeycelik.Models.Depo
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veri Ekle</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Yeni Depo Kaydı Ekle</h2>
+
+        <!-- Create Form -->
+        <form method="post" action="@Url.Action("Create", "Depoenvanter")">
+            @Html.AntiForgeryToken() <!-- CSRF koruması ekliyoruz -->
+
+            <div class="form-group">
+                <label for="Marka">Marka</label>
+                <input type="text" class="form-control" id="Marka" name="Marka" required />
+            </div>
+            <div class="form-group">
+                <label for="Product">Ürün</label>
+                <input type="text" class="form-control" id="Product" name="Product" required />
+            </div>
+            <div class="form-group">
+                <label for="AssetState">Durum</label>
+                <input type="text" class="form-control" id="AssetState" name="AssetState" required />
+            </div>
+            <div class="form-group">
+                <label for="OrgSerialNumber">Seri Numarası</label>
+                <input type="text" class="form-control" id="OrgSerialNumber" name="OrgSerialNumber" required />
+            </div>
+            <div class="form-group">
+                <label for="ProductType">Ürün Türü</label>
+                <input type="text" class="form-control" id="ProductType" name="ProductType" required />
+            </div>
+            <div class="form-group">
+                <label for="Site">Site</label>
+                <input type="text" class="form-control" id="Site" name="Site" required />
+            </div>
+            <div class="form-group">
+                <label for="UrunTipi">Ürün Tipi</label>
+                <input type="text" class="form-control" id="UrunTipi" name="UrunTipi" required />
+            </div>
+
+            <button type="submit" class="btn btn-success mt-3">Kaydet</button>
+        </form>
+
+    </div>
+</body>
+</html>

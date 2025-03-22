@@ -1,0 +1,180 @@
+﻿@{
+    ViewData["Title"] = "Beyçelik Depo Envanteri";
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #003366;
+            padding: 10px 20px; /* Navbar'ın yüksekliğini arttırdık */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            height: 70px; /* Yüksekliği 70px yapıldı */
+        }
+
+            .navbar .navbar-brand {
+                font-size: 24px; /* Yazı boyutunu büyüttük */
+                font-weight: 700;
+                color: #fff;
+                margin: 0;
+                padding: 0;
+            }
+
+            .navbar .nav-link {
+                color: #fff;
+                font-size: 18px; /* Yazı boyutunu büyüttük */
+                padding: 12px 20px; /* Padding arttırıldı */
+                transition: background-color 0.3s;
+            }
+
+                .navbar .nav-link:hover {
+                    background-color: #00509e;
+                    border-radius: 5px;
+                }
+
+        /* Sayfa başlığı */
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 80px;
+            color: #003366;
+            margin-bottom: 30px;
+        }
+
+        /* Ana içerik */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        /* Bilgi kutuları */
+        .extra-info {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .info-box {
+            background-color: #ffffff;
+            border: 2px solid #003366;
+            border-radius: 10px;
+            padding: 20px;
+            width: 320px; /* Genişlik 320px */
+            height: 230px; /* Yükseklik 230px */
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: #f1faff; /* Hafif mavi arka plan */
+        }
+
+            .info-box:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .info-box h3 {
+                color: #003366;
+                font-size: 28px; /* Yazı boyutunu büyüttük */
+                font-weight: 700; /* Kalın yazı */
+                margin-bottom: 15px;
+            }
+
+            .info-box p {
+                color: #555;
+                font-size: 18px; /* Yazı boyutunu büyüttük */
+                line-height: 1.6;
+            }
+
+        /* Footer */
+        .footer {
+            background-color: #003366;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <img src="~/images/logo.png" alt="Beyçelik Logo" style="height: 40px; margin-right: 15px;">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">Beyçelik Depo Envanteri</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <!-- Ortalamak için mx-auto eklendi -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Depoenvanter")">Veri Tabloları</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Lokasyon")">Lokasyonlar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Login")">Çıkış Yap</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Ana Sayfa İçeriği -->
+    <div class="container">
+
+        <!-- Bilgi kutuları -->
+        <div class="extra-info">
+            <div class="info-box">
+                <h3>Yenilikçi Çözümler</h3>
+                <p>Otomotiv sektörüne yönelik yenilikçi ve etkili depo yönetimi çözümleri sunuyoruz.</p>
+            </div>
+            <div class="info-box">
+                <h3>Sürekli Gelişim</h3>
+                <p>Her geçen gün iş süreçlerini iyileştiriyor ve verimliliği artırıyoruz.</p>
+            </div>
+            <div class="info-box">
+                <h3>Vizyonumuz</h3>
+                <p>Dünya çapında lider bir depo yönetim çözümü sağlayıcısı olmayı hedefliyoruz.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2025 Beyçelik Gestamp. Tüm Hakları Saklıdır.</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

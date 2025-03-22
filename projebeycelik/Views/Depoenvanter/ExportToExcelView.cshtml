@@ -1,0 +1,72 @@
+﻿@model IEnumerable<projebeycelik.Models.Depo>
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel'e Aktar</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Excel'e Aktarılacak Depo Listesi</h2>
+
+        <!--  Ana Sayfaya gitme Butonu -->
+        <a href="@Url.Action("Index", "Anasayfa")" class="btn btn-primary mb-3">Ana sayfa'ya git'</a>
+
+        <!-- Arama Formu -->
+        <form method="get" action="@Url.Action("ExportToExcelView", "Depoenvanter")">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Ara..." name="search" value="@ViewData["search"]" />
+                <button class="btn btn-primary" type="submit">Ara</button>
+            </div>
+        </form>
+
+        <!-- Excel Kaydetme Butonu -->
+        <form method="post" action="@Url.Action("ExportToExcel", "Depoenvanter")">
+            <!-- Arama parametresini gizli olarak gönderiyoruz -->
+            <input type="hidden" name="search" value="@ViewData["search"]" />
+
+            <!-- Dosya Adı Girme Alanı -->
+            <div class="mb-3">
+                <label for="fileName" class="form-label">Dosya Adı:</label>
+                <input type="text" class="form-control" id="fileName" name="fileName" required placeholder="DepoEnvanteri">
+            </div>
+
+            <button type="submit" class="btn btn-success">Excel Olarak İndir</button>
+        </form>
+
+        <!-- Tablo -->
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Marka</th>
+                    <th>Ürün</th>
+                    <th>Durum</th>
+                    <th>Seri Numarası</th>
+                    <th>Ürün Türü</th>
+                    <th>Site</th>
+                    <th>Ürün Tipi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Marka</td>
+                        <td>@item.Product</td>
+                        <td>@item.AssetState</td>
+                        <td>@item.OrgSerialNumber</td>
+                        <td>@item.ProductType</td>
+                        <td>@item.Site</td>
+                        <td>@item.UrunTipi</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

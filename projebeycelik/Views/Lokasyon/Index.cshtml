@@ -1,0 +1,113 @@
+﻿@model IEnumerable<projebeycelik.Controllers.LokasyonViewModel>
+
+@{
+  
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <!-- Ana Sayfaya Dön Butonu -->
+    <div class="back-to-home">
+        <a href="@Url.Action("Index", "Anasayfa")" class="back-button">Ana Sayfaya Dön</a>
+    </div>
+
+    <h1 class="page-title">Lokasyonlar</h1>
+
+    <div class="location-container">
+        @foreach (var lokasyon in Model)
+        {
+            <section class="location-card">
+                <img src="~/images/logo.png" alt="@lokasyon.Isim Iconu" class="location-icon">
+                <div class="location-details">
+                    <h2 class="location-name">@lokasyon.Isim</h2>
+                    <p><strong>Adres:</strong> @lokasyon.Adres</p>
+                    <p><strong>İletişim:</strong> @lokasyon.Telefon</p>
+                    <p><strong>Sorumlu:</strong> @lokasyon.Sorumlu</p>
+                    <p><strong>E-posta:</strong> @lokasyon.Email</p>
+                </div>
+            </section>
+        }
+    </div>
+</main>
+
+<style>
+    main {
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .page-title {
+        text-align: center;
+        font-size: 36px;
+        font-weight: 700;
+        color: #003366;
+        margin-bottom: 50px;
+    }
+
+    .location-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        padding: 0 20px;
+        margin: 0 auto;
+    }
+
+    .location-card {
+        background-color: #f1faff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+    .location-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+        object-fit: cover;
+    }
+
+    .location-name {
+        font-size: 28px;
+        font-weight: 700;
+        color: #003366;
+        margin-bottom: 10px;
+    }
+
+    .location-details p {
+        font-size: 18px;
+        color: #555;
+        margin: 10px 0;
+    }
+
+    .location-details strong {
+        color: #003366;
+    }
+
+    /* Ana Sayfaya Dön Butonu */
+    .back-to-home {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .back-button {
+        background-color: #003366;
+        color: white;
+        padding: 10px 20px;
+        font-size: 18px;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+        .back-button:hover {
+            background-color: #0057a6;
+        }
+</style>
